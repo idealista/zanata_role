@@ -1,0 +1,24 @@
+---
+
+- name: Zanata | Create zanata config paths
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ zanata_user }}"
+    group: "{{ zanata_group }}"
+    recurse: yes
+  with_items:
+    - "{{ zanata_conf_path }}"
+
+- name: Zanata | Copy zanata config
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0640
+    owner: "{{ zanata_user }}"
+    group: "{{ zanata_group }}"
+  with_items:
+    - { src: "zanata.properties.j2", dest: "{{ zanata_conf_path }}/zanata.properties" }
+    - { src: "zanata.conf.j2", dest: "{{ zanata_conf_path }}/zanata.conf" }
+    - { src: "standalone-zanata.xml.j2", dest: "{{ zanata_container_configuration_path }}/standalone-zanata.xml" }
+  notify: restart zanata

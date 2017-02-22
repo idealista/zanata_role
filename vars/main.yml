@@ -1,1 +1,7 @@
 ---
+required_libs:
+  - unzip
+
+zanata_version_build_name: zanata-{{ zanata_version }}
+zanata_package: "{{ zanata_version_build_name }}.zip"
+zanata_url: "https://github.com/zanata/zanata-platform/releases/download/platform-{{ zanata_version }}/zanata-{{ zanata_version }}-{{ zanata_container }}.zip"

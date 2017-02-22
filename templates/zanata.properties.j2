@@ -1,0 +1,8 @@
+# JDBC url for the Zanata database (includes host, port, schema name)
+zanata.db.url=jdbc:mysql://{{ zanata_db_host }}:{{ zanata_db_port }}/{{ zanata_db_name }}?characterEncoding={{ zanata_db_encoding }}
+# Database username
+zanata.db.username={{ zanata_db_user }}
+# Database password
+zanata.db.password={{ zanata_db_password }}
+
+jboss.http.port={{ zanata_port }}

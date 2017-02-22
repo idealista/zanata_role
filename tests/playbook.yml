@@ -4,5 +4,5 @@
   roles:
     - role: mysql
     - role: java
-    - role: wildfly-role
+    - role: wildfly
     - role: zanata-role

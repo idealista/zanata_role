@@ -1,5 +1,16 @@
 ---
 
-- include: install.yml
+- name: Zanata | Install
+  include: install.yml
+  tags:
+    - install
 
-- include: service.yml
+- name: Zanata | Configure
+  include: config.yml
+  tags:
+    - configure
+
+- name: Zanata | Service
+  include: service.yml
+  tags:
+    - service
