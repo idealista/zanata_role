@@ -1,0 +1,15 @@
+---
+
+zanata_version: '4.1.0'
+zanata_container: 'wildfly'
+zanata_version_build_name: zanata-{{ zanata_version }}
+zanata_package: "{{ zanata_version_build_name }}.zip"
+zanata_url: "https://github.com/zanata/zanata-platform/releases/download/platform-{{ zanata_version }}/zanata-{{ zanata_version }}-{{ zanata_container }}.zip"
+
+zanata_container_install_dir: '/opt/wildfly'
+
+# start on boot
+zanata_service_enabled: yes
+
+# current state: started, stopped
+zanata_service_state: started

@@ -1,0 +1,12 @@
+---
+
+mysql_databases: 
+   - name: zanata
+     encoding: utf8
+
+mysql_users: 
+   - name: zanata
+     host: localhost
+     password: zanatapw
+     priv: 
+        - zanata.*:ALL

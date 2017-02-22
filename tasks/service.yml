@@ -1,0 +1,24 @@
+---
+
+- name: Zanata | Zanata WildFly service conf destination folder exists
+  file:
+    path: "{{ item.path }}"
+    state: directory
+  with_items:
+    - { path: "/etc/zanata/" }
+    - { path: "/opt/zanata/bin/" }
+
+- name: Zanata | Copy necessary systemd files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    remote_src: no
+  with_items:
+    - { src: "etc/systemd/system/zanata.service", dest: "/etc/systemd/system/zanata.service" }
+
+- name: Zanata | Start service
+  systemd:
+    name: zanata
+    state: "{{ zanata_service_state }}"
+    enabled: "{{ zanata_service_enabled }}"
+    daemon_reload: yes

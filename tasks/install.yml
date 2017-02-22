@@ -1,0 +1,21 @@
+---
+
+- name: Zanata | Download Zanata binaries
+  get_url:
+    url: "{{ zanata_url }}"
+    dest: "/tmp/{{ zanata_package }}"
+  register: download_zanata
+
+- name: Zanata | Install unzip unarchiver to extract Zanata binaries
+  apt: 
+    name: unzip
+    state: present
+
+- name: Zanata | Extract Zanata in the container directory
+  unarchive:
+    src: "/tmp/{{ zanata_package }}"
+    dest: "{{ zanata_container_install_dir }}"
+    remote_src: yes
+  when: download_zanata|changed
+  tags:
+   skip_ansible_lint

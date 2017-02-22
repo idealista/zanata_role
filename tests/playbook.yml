@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  roles:
+    - role: mysql
+    - role: java
+    - role: wildfly-role
+    - role: zanata-role
