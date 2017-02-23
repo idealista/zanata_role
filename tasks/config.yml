@@ -20,5 +20,4 @@
   with_items:
     - { src: "zanata.properties.j2", dest: "{{ zanata_conf_path }}/zanata.properties" }
     - { src: "zanata.conf.j2", dest: "{{ zanata_conf_path }}/zanata.conf" }
-    - { src: "standalone-zanata.xml.j2", dest: "{{ zanata_container_configuration_path }}/standalone-zanata.xml" }
   notify: restart zanata
