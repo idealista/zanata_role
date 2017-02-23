@@ -35,3 +35,8 @@ zanata_db_name: zanata
 zanata_db_encoding: UTF-8
 zanata_db_user: zanata
 zanata_db_password: zanatapw
+
+## SMTP
+zanata_email_default_from_address: no-reply@zanata.org
+zanata_smtp_hostname: localhost
+zanata_smtp_port: 25
