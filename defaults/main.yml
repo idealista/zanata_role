@@ -1,7 +1,7 @@
 ---
 ## General
 
-zanata_version: 4.1.0
+zanata_version: 4.0.0
 zanata_container: wildfly
 
 ## Service options
