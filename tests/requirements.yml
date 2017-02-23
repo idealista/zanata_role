@@ -10,5 +10,5 @@
 
 - src: https://github.com/idealista-tech/java-role.git
   scm: git
-  version: origin/master
+  version: 1.0.0
   name: java
