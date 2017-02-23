@@ -1,15 +1,37 @@
 ---
+## General
 
-zanata_version: '4.1.0'
-zanata_container: 'wildfly'
-zanata_version_build_name: zanata-{{ zanata_version }}
-zanata_package: "{{ zanata_version_build_name }}.zip"
-zanata_url: "https://github.com/zanata/zanata-platform/releases/download/platform-{{ zanata_version }}/zanata-{{ zanata_version }}-{{ zanata_container }}.zip"
+zanata_version: 4.1.0
+zanata_container: wildfly
 
-zanata_container_install_dir: '/opt/wildfly'
+## Service options
+
+# Owner (setted same as container)
+zanata_user: wildfly
+zanata_group: wildfly
 
 # start on boot
-zanata_service_enabled: yes
-
+zanata_service_enabled: True
 # current state: started, stopped
 zanata_service_state: started
+
+# Files & Paths
+zanata_container_install_path: "/opt/wildfly"
+zanata_container_configuration_path: "{{ zanata_container_install_path }}/standalone/configuration/"
+zanata_conf_path: "/etc/zanata"
+
+# Network
+zanata_bind: 0.0.0.0
+zanata_port: 8088 # Not 80
+
+# JVM
+zanata_xmx: 1g
+zanata_xms: 1g
+
+## DB Connection
+zanata_db_host: localhost
+zanata_db_port: 3306
+zanata_db_name: zanata
+zanata_db_encoding: UTF-8
+zanata_db_user: zanata
+zanata_db_password: zanatapw

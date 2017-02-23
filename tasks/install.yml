@@ -1,21 +1,31 @@
 ---
 
+- name: Zanata | Installing dependencies
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items: "{{ required_libs }}"
+  tags:
+    skip_ansible_lint
+
 - name: Zanata | Download Zanata binaries
   get_url:
     url: "{{ zanata_url }}"
     dest: "/tmp/{{ zanata_package }}"
   register: download_zanata
 
-- name: Zanata | Install unzip unarchiver to extract Zanata binaries
-  apt: 
-    name: unzip
-    state: present
-
 - name: Zanata | Extract Zanata in the container directory
   unarchive:
+    copy: no
     src: "/tmp/{{ zanata_package }}"
-    dest: "{{ zanata_container_install_dir }}"
-    remote_src: yes
+    dest: "{{ zanata_container_install_path }}"
+    owner: "{{ zanata_user }}"
+    group: "{{ zanata_group }}"
   when: download_zanata|changed
-  tags:
-   skip_ansible_lint
+
+- name: Zanata | Copy Daemon script
+  template:
+    src: zanata.service.j2
+    dest: /lib/systemd/system/zanata.service
+    mode: 0644
+  notify: restart zanata
