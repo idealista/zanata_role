@@ -4,6 +4,10 @@
 zanata_version: 4.0.0
 zanata_container: wildfly
 
+## System Properties
+
+zanata_admin_users: []
+
 ## Service options
 
 # Owner (setted same as container)
