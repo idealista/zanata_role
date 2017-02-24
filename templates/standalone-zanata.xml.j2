@@ -37,11 +37,18 @@
         <property name="javamelody.storage-directory" value="${user.home}/zanata/stats"/>
         <property name="hibernate.search.default.indexBase" value="${user.home}/zanata/indexes"/>
         <property name="jboss.as.management.blocking.timeout" value="1000"/>
+        <!--<property name="zanata.security.adminusers" value=""/>-->
         <property name="zanata.security.authpolicy.internal" value="zanata.internal"/>
         <property name="zanata.security.authpolicy.openid" value="zanata.openid"/>
-        <!--<property name="zanata.security.adminusers" value=""/>-->
+        {% set comma = joiner(",") %}
+        <property name="zanata.security.adminusers" value="{% for item in zanata_admin_users -%}{{ comma() }}{{ item }}{%- endfor %}"/>
         <property name="zanata.email.defaultfromaddress" value="{{ zanata_email_default_from_address }}"/>
         <property name="zanata.file.directory" value="${user.home}/zanata/files"/>
+        {% if zanata_ldap_authentication %}
+        <property name="zanata.security.authpolicy.jaas" value="zanata.jaas"/>
+        {% else %}
+        <property name="zanata.security.authpolicy.internal" value="zanata.internal"/>
+        {% endif %}
     </system-properties>
 
 
@@ -165,6 +172,12 @@
             </logger>
             <logger category="jacorb.config">
                 <level name="ERROR" />
+            </logger>
+            <logger category="org.jboss.security">
+                <level name="TRACE"/>
+            </logger>
+            <logger category="com.sun.jndi.ldap">
+                <level name="TRACE"/>
             </logger>
             <root-logger>
                 <level name="INFO" />
@@ -501,6 +514,22 @@
                 <!-- Zanata JAAS (custom) authentication login module -->
                 <security-domain name="zanata.jaas">
                     <authentication>
+                        {% if zanata_ldap_authentication %}
+                        <login-module code="org.jboss.security.auth.spi.LdapExtLoginModule" flag="required">
+                            <module-option name="java.naming.factory.initial" value="com.sun.jndi.ldap.LdapCtxFactory"/>
+                            <module-option name="java.naming.provider.url" value="ldap://{{ zanata_ldap_server }}:{{ zanata_ldap_port }}"/>
+                            <module-option name="java.naming.security.authentication" value="simple"/>
+                            <module-option name="bindDN" value="{{ zanata_ldap_dn }}"/>
+                            <module-option name="bindCredential" value="{{ zanata_ldap_password }}"/>
+                            <module-option name="baseCtxDN" value="{{ zanata_ldap_base_dn }}"/>
+                            <module-option name="baseFilter" value="{{ zanata_ldap_filter }}"/>
+                            <module-option name="rolesCtxDN" value="{{ zanata_ldap_role_dn }}"/>
+                            <module-option name="roleFilter" value="{{ zanata_ldap_role_filter }}"/>
+                            <module-option name="roleAttributeID" value="{{ zanata_ldap_role_attribute_id }}"/>
+                            <module-option name="searchScope" value="SUBTREE_SCOPE"/>
+                            <module-option name="allowEmptyPasswords" value="{{ zanata_ldap_allow_empty_passwords }}"/>
+                        </login-module>
+                        {% else %}
                         <login-module
                           code="org.jboss.security.auth.spi.DatabaseServerLoginModule"
                           flag="required">
@@ -512,10 +541,11 @@
                             <module-option name="hashAlgorithm" value="md5" />
                             <module-option name="hashEncoding" value="hex" />
                         </login-module>
+                        {% endif %}
                     </authentication>
                 </security-domain>
                 <!-- For other Zanata authentication options, see
-                 http://docs.zanata.org/en/release/user-guide/system-admin/configuration/authentication/ -->
+                http://docs.zanata.org/en/release/user-guide/system-admin/configuration/authentication/ -->
                 <security-domain name="other" cache-type="default">
                     <authentication>
                         <login-module code="Remoting" flag="optional">
@@ -550,7 +580,7 @@
         <subsystem xmlns="urn:jboss:domain:undertow:3.0">
             <buffer-cache name="default" />
             <server name="default-server">
-                <http-listener name="default" redirect-socket="https"
+                <http-listener name="default"
                   socket-binding="http" />
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content" />

@@ -4,6 +4,10 @@
 zanata_version: 4.0.0
 zanata_container: wildfly
 
+## System Properties
+
+zanata_admin_users: []
+
 ## Service options
 
 # Owner (setted same as container)
@@ -17,7 +21,7 @@ zanata_service_state: started
 
 # Files & Paths
 zanata_container_install_path: "/opt/wildfly"
-zanata_container_configuration_path: "{{ zanata_container_install_path }}/standalone/configuration/"
+zanata_container_configuration_path: "{{ zanata_container_install_path }}/standalone/configuration"
 zanata_conf_path: "/etc/zanata"
 
 # Network
@@ -40,3 +44,19 @@ zanata_db_password: zanatapw
 zanata_email_default_from_address: no-reply@zanata.org
 zanata_smtp_hostname: localhost
 zanata_smtp_port: 25
+
+## LDAP
+zanata_ldap_authentication: false
+zanata_ldap_server: localhost
+zanata_ldap_port: 10389
+zanata_ldap_dn: uid=admin,ou=system
+zanata_ldap_password: secret
+zanata_ldap_base_dn: ou=basicauth,ou=users,ou=axis,o=abc,c=au
+zanata_ldap_filter: (uid={0})
+zanata_ldap_role_dn: ou=basicauth,ou=users,ou=axis,o=abc,c=au
+zanata_ldap_role_filter: (member={1})
+zanata_ldap_role_attribute_id: cn
+zanata_ldap_allow_empty_passwords: true
+
+# DEBUG
+zanata_system_log: false

@@ -11,5 +11,11 @@ mysql_users:
      priv:
         - zanata.*:ALL
 
+zanata_admin_users:
+  - admin
+  - test
+
+zanata_system_log: true
+
 wildfly_service_enabled: false
 wildfly_service_state: stopped
