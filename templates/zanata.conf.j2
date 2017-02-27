@@ -1,4 +1,4 @@
 # The address to bind to
 ZANATA_BIND={{ zanata_bind }}
 
-JAVA_OPTS="-Xms{{ zanata_xms }} -Xmx{{ zanata_xmx }}"
+JAVA_OPTS="-Xms{{ zanata_xms }} -Xmx{{ zanata_xmx }} -Djava.net.preferIPv4Stack=true"
