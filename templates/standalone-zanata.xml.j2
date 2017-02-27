@@ -36,10 +36,8 @@
     <system-properties>
         <property name="javamelody.storage-directory" value="${user.home}/zanata/stats"/>
         <property name="hibernate.search.default.indexBase" value="${user.home}/zanata/indexes"/>
-        <property name="jboss.as.management.blocking.timeout" value="1000"/>
-        <!--<property name="zanata.security.adminusers" value=""/>-->
-        <property name="zanata.security.authpolicy.internal" value="zanata.internal"/>
-        <property name="zanata.security.authpolicy.openid" value="zanata.openid"/>
+        <property name="jboss.as.management.blocking.timeout" value="1000"/>        
+        <!-- <property name="zanata.security.authpolicy.openid" value="zanata.openid"/> -->
         {% set comma = joiner(",") %}
         <property name="zanata.security.adminusers" value="{% for item in zanata_admin_users -%}{{ comma() }}{{ item }}{%- endfor %}"/>
         <property name="zanata.email.defaultfromaddress" value="{{ zanata_email_default_from_address }}"/>
