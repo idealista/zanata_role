@@ -29,4 +29,4 @@ def test_zanata_service(File, Service, Socket, AnsibleDefaults):
     assert File("/lib/systemd/system/zanata.service").exists
     assert Service("zanata").is_enabled
     assert Service("zanata").is_running
-    assert Socket("tcp://:::" + str(port)).is_listening
+    assert Socket("tcp://0.0.0.0:" + str(port)).is_listening

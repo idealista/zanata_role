@@ -22,6 +22,8 @@
     owner: "{{ zanata_user }}"
     group: "{{ zanata_group }}"
   when: download_zanata|changed
+  tags:
+    skip_ansible_lint
 
 - name: Zanata | Copy Daemon script
   template:
