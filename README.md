@@ -1,6 +1,6 @@
 ![Logo](logo.gif)
 
-# Zanata Ansoble Role
+# Zanata Ansible Role
 
 This Ansible role installs a Zanata server in a Debian environment. Based on the instructions present in [Zanata Platform Documentation](http://docs.zanata.org/en/latest/user-guide/system-admin/configuration/installation/).
 
