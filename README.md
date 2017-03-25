@@ -1,5 +1,6 @@
-Zanata Role
-===========
+![Logo](logo.gif)
+
+# Zanata Ansible Role
 
 This Ansible role installs a Zanata server in a Debian environment. Based on the instructions present in [Zanata Platform Documentation](http://docs.zanata.org/en/latest/user-guide/system-admin/configuration/installation/).
 
@@ -19,7 +20,7 @@ These instructions will get you a copy of the role for your Ansible Playbook. On
 
 ### Prerequisities
 
-Ansible 2.2.0.0 version installed.
+Ansible 2.2.1.0 version installed.
 Inventory destination should be a Debian environment.
 
 For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [landrush](https://github.com/vagrant-landrush/landrush) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
@@ -52,7 +53,7 @@ Use in a playbook:
 
 ## Usage
 
-Look to the defaults properties file to see the possible configuration properties.
+Look to the [defaults](defaults/main.yml) properties file to see the possible configuration properties.
 
 ## Testing
 
@@ -60,7 +61,7 @@ Execute ``` molecule test ``` under zanata-role folder to run the automated test
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.2.0.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.2.1.0-green.svg)
 
 ## Versioning
 
@@ -72,7 +73,7 @@ Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGE
 
 * **Idealista** - *Work with* - [idealista-tech](https://github.com/idealista-tech)
 
-See also the list of [contributors](https://github.com/idealista-tech/wildfly-role/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/idealista-tech/zanata-role/contributors) who participated in this project.
 
 ## License
 

@@ -1,11 +1,11 @@
-- src: http://deployer:deployer@bitbucket.int.sys.idealista/scm/as/mysql-role.git
+- src: https://github.com/idealista-tech/mysql-role.git
   scm: git
-  version: origin/master
+  version: 1.0.0
   name: mysql
 
-- src: http://deployer:deployer@bitbucket.int.sys.idealista/scm/as/wildfly-role.git
+- src: https://github.com/idealista-tech/wildfly-role.git
   scm: git
-  version: origin/master
+  version: 1.0.0
   name: wildfly
 
 - src: https://github.com/idealista-tech/java-role.git
