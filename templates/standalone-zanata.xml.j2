@@ -107,20 +107,25 @@
 
     <profile>
         <subsystem xmlns="urn:jboss:domain:logging:3.0">
+{% if zanata_log_console_enabled %}
             <console-handler name="CONSOLE">
                 <level name="INFO" />
                 <formatter>
                     <named-formatter name="COLOR-PATTERN" />
                 </formatter>
             </console-handler>
-            <periodic-rotating-file-handler name="FILE" autoflush="true">
+{% endif %}
+{% if zanata_log_file_enabled %}
+            <size-rotating-file-handler name="FILE" autoflush="true">
                 <formatter>
                     <named-formatter name="PATTERN" />
                 </formatter>
-                <file relative-to="jboss.server.log.dir" path="server.log" />
-                <suffix value=".yyyy-MM-dd" />
+                <file path="{{ zanata_log_file_path }}/{{ zanata_log_file_name }}"/>
+                <rotate-size value="{{ zanata_log_file_rotatesize }}"/>
+                <max-backup-index value="{{ zanata_log_file_maxBackupIndex }}"/>
                 <append value="true" />
-            </periodic-rotating-file-handler>
+            </size-rotating-file-handler >
+{% endif %}
             <logger category="com.arjuna">
                 <level name="WARN" />
             </logger>
@@ -170,16 +175,20 @@
                 <level name="ERROR" />
             </logger>
             <logger category="org.jboss.security">
-                <level name="TRACE"/>
+                <level name="INFO"/>
             </logger>
             <logger category="com.sun.jndi.ldap">
-                <level name="TRACE"/>
+                <level name="INFO"/>
             </logger>
             <root-logger>
                 <level name="INFO" />
                 <handlers>
-                    <handler name="CONSOLE" />
-                    <handler name="FILE" />
+{% if zanata_log_console_enabled %}
+                    <handler name="CONSOLE"/>
+{% endif %}
+{% if zanata_log_file_enabled %}
+                    <handler name="FILE"/>
+{% endif %}
                 </handlers>
             </root-logger>
             <formatter name="PATTERN">
