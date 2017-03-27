@@ -23,6 +23,16 @@ zanata_service_state: started
 zanata_container_install_path: "/opt/wildfly"
 zanata_container_configuration_path: "{{ zanata_container_install_path }}/standalone/configuration"
 zanata_conf_path: "/etc/zanata"
+zanata_log_file_path: "{{ zanata_container_install_path }}/standalone/log"
+
+# Log
+zanata_log_file_name: server.log
+zanata_log_console_enabled: "false"
+zanata_log_console_level: INFO
+zanata_log_file_enabled: "true"
+zanata_log_file_level: INFO
+zanata_log_file_rotatesize: 1024000
+zanata_log_file_maxBackupIndex: 7
 
 # Network
 zanata_bind: 0.0.0.0
