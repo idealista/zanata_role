@@ -17,11 +17,17 @@ zanata_admin_users:
   - admin
   - test
 
+zanata_log_file_path: /var/log/zanata
+zanata_log_file_name: zanata.log
+
 zanata_system_log: true
 
 ## WILDFLY
 wildfly_service_enabled: false
 wildfly_service_state: stopped
+
+wildfly_log_file_path: /var/log/wildfly
+wildfly_log_file_name: wildfly.log
 
 wildfly_management_users:
   - {

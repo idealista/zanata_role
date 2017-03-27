@@ -25,6 +25,14 @@
   tags:
     skip_ansible_lint
 
+- name: Zanata | Create log path
+  file:
+    path: "{{ zanata_log_file_path }}"
+    state: directory
+    owner: "{{ zanata_user }}"
+    group: "{{ zanata_group }}"
+
+
 - name: Zanata | Copy Daemon script
   template:
     src: zanata.service.j2
