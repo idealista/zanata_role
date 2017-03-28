@@ -36,7 +36,6 @@ vagrant:
   raw_config_args:
   - "landrush.enabled = true"
   - "landrush.tld = 'vm'"
-  - "landrush.guest_redirect_dns = false"
   platforms:
     - name: Debian
       box: debian/jessie64
@@ -49,7 +48,7 @@ vagrant:
         cpus: 2
 
   instances:
-    - name: zanata
+    - name: zanata.vm
       ansible_groups:
         - test01
       interfaces:
