@@ -12,6 +12,6 @@ galaxy_info:
     - translation
 
 dependencies:
-  - java
-  - mysql
-  - wildfly
+  - idealista.java-role
+  - idealista.mysql-role
+  - idealista.wildfly-role
