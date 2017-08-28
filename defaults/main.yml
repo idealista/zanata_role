@@ -70,3 +70,6 @@ zanata_ldap_allow_empty_passwords: true
 
 # DEBUG
 zanata_system_log: false
+
+# DEPLOYMENT SCAN
+zanata_deployment_scan_disabled: True
