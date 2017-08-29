@@ -109,7 +109,7 @@
         <subsystem xmlns="urn:jboss:domain:logging:3.0">
 {% if zanata_log_console_enabled %}
             <console-handler name="CONSOLE">
-                <level name="INFO" />
+                <level name="{{ zanata_log_console_level }}" />
                 <formatter>
                     <named-formatter name="COLOR-PATTERN" />
                 </formatter>
@@ -127,61 +127,63 @@
             </size-rotating-file-handler >
 {% endif %}
             <logger category="com.arjuna">
-                <level name="WARN" />
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <!-- JDBC connection allocation/release will be logged to server.log -->
             <logger
               category="org.hibernate.engine.jdbc.internal.LogicalConnectionImpl">
-                <level name="DEBUG" />
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <!-- More info about JDBC connections will be logged to server.log -->
             <logger category="org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl">
-                <level name="DEBUG" />
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <logger category="org.jboss.as.config">
-                <level name="DEBUG" />
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <!-- Disable some startup warnings triggered by third-party jars -->
             <logger category="org.jboss.as.server.deployment">
                 <filter-spec value="not(any( match(&quot;JBAS015960&quot;), match(&quot;JBAS015893&quot;) ))"/>
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <!-- Disable WARN about GWT's org.hibernate.validator.ValidationMessages -->
             <logger category="org.jboss.modules">
-                <level name="ERROR"/>
+                <level name="{{ zanata_log_file_level }}"/>
             </logger>
             <!-- Disable WARN: "RP discovery / realm validation disabled;" -->
             <logger category="org.openid4java.server.RealmVerifier">
-                <level name="ERROR"/>
+                <level name="{{ zanata_log_file_level }}"/>
             </logger>
             <!-- Disable WARN: "JMS API was found on the classpath..." -->
             <logger category="org.richfaces.log.Application">
                 <filter-spec value="not( match(&quot;JMS API was found on the classpath&quot;) )"/>
+                <level name="{{ zanata_log_file_level }}"/>
             </logger>
             <!-- Disable WARN: "Queue with name '...' has already been registered" -->
             <logger category="org.richfaces.log.Components">
-                <level name="ERROR"/>
+                <level name="{{ zanata_log_file_level }}"/>
             </logger>
             <!-- Enable if you want to log all HTTP requests to server.log: -->
             <!--<logger category="org.zanata.requests">-->
             <!--<level name="DEBUG"/>-->
             <!--</logger>-->
             <logger category="sun.rmi">
-                <level name="WARN" />
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <logger category="jacorb">
-                <level name="WARN" />
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <logger category="jacorb.config">
-                <level name="ERROR" />
+                <level name="{{ zanata_log_file_level }}" />
             </logger>
             <logger category="org.jboss.security">
-                <level name="INFO"/>
+                <level name="{{ zanata_log_file_level }}"/>
             </logger>
             <logger category="com.sun.jndi.ldap">
-                <level name="INFO"/>
+                <level name="{{ zanata_log_file_level }}"/>
             </logger>
             <root-logger>
-                <level name="INFO" />
+                <level name="{{ zanata_log_file_level }}" />
                 <handlers>
 {% if zanata_log_console_enabled %}
                     <handler name="CONSOLE"/>
@@ -256,6 +258,9 @@
         <subsystem xmlns="urn:jboss:domain:deployment-scanner:2.0">
             <deployment-scanner path="deployments" relative-to="jboss.server.base.dir"
               scan-interval="5000"
+              {% if zanata_deployment_scan_disabled %}
+              scan-enabled="false"
+              {% endif %}
               runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}" />
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ee:4.0">
