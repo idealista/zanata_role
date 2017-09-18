@@ -17,6 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#3](https://github.com/idealista/zanata-role/issues/3) Adding username to metadata dependencies* @dortegau
 - *[#1](https://github.com/idealista/zanata-role/issues/1) Fix landrush config* @dortegau
 
+
 ## [1.0.0](https://github.com/idealista/zanata-role/tree/1.0.0)
 
 ### Added
