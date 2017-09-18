@@ -5,14 +5,17 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/zanata-role/tree/develop)
 
+## [1.1.0](https://github.com/idealista/zanata-role/tree/1.1.0)
 
+### Added
+- *[#10](https://github.com/idealista/zanata-role/issues/10) Updating Zanata version to latest release (4.2.1)* @dortegau
 
-## [1.0.1](https://github.com/idealista/redis-role/tree/1.0.1) (2017-08-29)
-[Full Changelog](https://github.com/idealista/redis-role/compare/1.0.0...1.0.1)
+## [1.0.1](https://github.com/idealista/zanata-role/tree/1.0.1)
 
 ### Fixed
-- *[#6](https://github.com/idealista/redis-role/issues/18) User logging level on template* @jdvr
-- *[#1](https://github.com/idealista/zanata-role/issues/1) Fix landrush config* @dortega
+- *[#6](https://github.com/idealista/zanata-role/issues/6) Fixing log level* @jdvr
+- *[#3](https://github.com/idealista/zanata-role/issues/3) Adding username to metadata dependencies* @dortegau
+- *[#1](https://github.com/idealista/zanata-role/issues/1) Fix landrush config* @dortegau
 
 
 ## [1.0.0](https://github.com/idealista/zanata-role/tree/1.0.0)

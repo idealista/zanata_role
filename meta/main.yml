@@ -10,8 +10,3 @@ galaxy_info:
         - jessie
   categories:
     - translation
-
-dependencies:
-  - idealista.java-role
-  - idealista.mysql-role
-  - idealista.wildfly-role
