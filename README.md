@@ -1,4 +1,4 @@
-![Logo](logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/zanata-role/master/logo.gif)
 
 # Zanata Ansible Role
 
@@ -30,9 +30,8 @@ For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant
 Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
-- src: http://github.com/idealista/zanata-role.git
-  scm: git
-  version: 1.0.0
+- src: idealista/zanata-role
+  version: 1.1.0
   name: zanata
 ```
 
