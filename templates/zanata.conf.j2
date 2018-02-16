@@ -1,4 +1,5 @@
 # The address to bind to
 ZANATA_BIND={{ zanata_bind }}
 
-JAVA_OPTS="-Xms{{ zanata_xms }} -Xmx{{ zanata_xmx }} -Djava.net.preferIPv4Stack=true"
+# To set an optional running configuration file
+RUN_CONF={{ wildfly_running_configuration_file }}

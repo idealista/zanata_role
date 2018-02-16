@@ -38,10 +38,6 @@ zanata_log_file_maxBackupIndex: 7
 zanata_bind: 0.0.0.0
 zanata_port: 8080 # Not 80
 
-# JVM
-zanata_xmx: 1g
-zanata_xms: 1g
-
 ## DB Connection
 zanata_db_host: localhost
 zanata_db_port: 3306
@@ -70,6 +66,3 @@ zanata_ldap_allow_empty_passwords: true
 
 # DEBUG
 zanata_system_log: false
-
-# DEPLOYMENT SCAN
-zanata_deployment_scan_disabled: True
