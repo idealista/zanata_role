@@ -19,8 +19,8 @@ zanata_admin_users:
 
 zanata_log_file_path: /var/log/zanata
 zanata_log_file_name: zanata.log
-
 zanata_system_log: true
+zanata_log_console_enabled: true
 
 # JVM
 zanata_xmx: 1g

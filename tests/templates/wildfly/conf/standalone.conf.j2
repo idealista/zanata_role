@@ -45,3 +45,5 @@ PRESERVE_JAVA_OPTS=true
 
 # Sample JAVA_OPTS setting Xms/Xmx
 JAVA_OPTS="$JAVA_OPTS -Xms{{ zanata_xms }} -Xmx{{ zanata_xmx }}"
+JAVA_OPTS="$JAVA_OPTS -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true"
+JAVA_OPTS="$JAVA_OPTS -Djboss.modules.system.pkgs=$JBOSS_MODULES_SYSTEM_PKGS -Djava.awt.headless=true"
