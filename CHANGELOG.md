@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/zanata-role/tree/develop)
 
+
+## [1.2.0](https://github.com/idealista/zanata-role/tree/1.2.0)
+### Fixed
+- *Removing possibility to disable autoscan* @dortegau
+
+### Added
+- *JVM could be configured providing custom standalone.conf file* @dortegau
+
 ## [1.1.0](https://github.com/idealista/zanata-role/tree/1.1.0)
 
 ### Added
