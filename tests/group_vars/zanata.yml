@@ -19,8 +19,12 @@ zanata_admin_users:
 
 zanata_log_file_path: /var/log/zanata
 zanata_log_file_name: zanata.log
-
 zanata_system_log: true
+zanata_log_console_enabled: true
+
+# JVM
+zanata_xmx: 1g
+zanata_xms: 1g
 
 ## WILDFLY
 wildfly_service_enabled: false
@@ -28,6 +32,8 @@ wildfly_service_state: stopped
 
 wildfly_log_file_path: /var/log/wildfly
 wildfly_log_file_name: wildfly.log
+
+wildfly_running_configuration_file: "{{ wildfly_conf_path }}/standalone.conf"
 
 wildfly_management_users:
   - {

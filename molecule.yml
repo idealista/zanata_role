@@ -50,7 +50,7 @@ vagrant:
   instances:
     - name: zanata.vm
       ansible_groups:
-        - test01
+        - zanata
       interfaces:
         - network_name: private_network
           type: dhcp

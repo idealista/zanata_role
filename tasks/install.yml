@@ -32,7 +32,6 @@
     owner: "{{ zanata_user }}"
     group: "{{ zanata_group }}"
 
-
 - name: Zanata | Copy Daemon script
   template:
     src: zanata.service.j2
