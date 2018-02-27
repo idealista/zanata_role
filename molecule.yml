@@ -73,7 +73,7 @@ docker:
       image: idealista/java-debian-ansible
       image_version: latest
       environment:
-        TMPDIR: /var/tmp
+        TMPDIR: /opt
       privileged: True
       cap_add:
         - SYS_ADMIN
