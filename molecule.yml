@@ -19,8 +19,9 @@ molecule:
   # directory to look for testinfra tests
   testinfra_dir: tests
 
-  # directory containing group_vars to use with ansible
-  group_vars: ../tests/group_vars
+  # directory to look for goss tests
+  goss_dir: tests/goss
+  goss_playbook: verifier.yml
 
 dependency:
   name: galaxy
@@ -34,9 +35,15 @@ ansible:
 vagrant:
   # molecule's --platform option will look for these names
   raw_config_args:
-  - "landrush.enabled = true"
-  - "landrush.tld = 'vm'"
+  - "hostmanager.enabled = true"
+  # Enable for debug purpose
+  #- "hostmanager.manage_host = true"
+  - "hostmanager.manage_guest = true"
+  - "hostmanager.ignore_private_ip = false"
+  - "hostmanager.include_offline = true"
   platforms:
+    - name: Debian9
+      box: debian/stretch64
     - name: Debian
       box: debian/jessie64
 
@@ -50,8 +57,28 @@ vagrant:
   instances:
     - name: zanata.vm
       ansible_groups:
-        - zanata
+        - zanata_group
       interfaces:
         - network_name: private_network
           type: dhcp
           auto_config: true
+docker:
+  network:
+    - name: zanata-network
+      driver: bridge
+  containers:
+    - name: zanata
+      ansible_groups:
+        - zanata_group
+      dockerfile: tests/Dockerfile
+      image: zanata_role
+      image_version: latest
+      privileged: True
+      cap_add:
+        - SYS_ADMIN
+      volume_mounts:
+        - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      command: '/lib/systemd/systemd'
+      network_mode: zanata-network
+verifier:
+  name: goss

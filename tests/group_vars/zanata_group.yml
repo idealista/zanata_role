@@ -22,6 +22,11 @@ zanata_log_file_name: zanata.log
 zanata_system_log: true
 zanata_log_console_enabled: true
 
+# Network
+zanata_port: 8888
+zanata_management_port: 9999
+zanata_management_security_enabled: false
+
 # JVM
 zanata_xmx: 1g
 zanata_xms: 1g
