@@ -70,8 +70,7 @@ docker:
     - name: zanata
       ansible_groups:
         - zanata_group
-      dockerfile: tests/Dockerfile
-      image: zanata_role
+      image: idealista/java-debian-ansible
       image_version: latest
       privileged: True
       cap_add:
