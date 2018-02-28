@@ -16,12 +16,17 @@ molecule:
     - .vagrant
     - .molecule
 
-  # directory to look for testinfra tests
-  testinfra_dir: tests
-
   # directory to look for goss tests
   goss_dir: tests/goss
   goss_playbook: verifier.yml
+
+  test:
+    sequence:
+      - destroy
+      - create
+      - converge
+      # - idempotence
+      - verify
 
 dependency:
   name: galaxy
