@@ -72,8 +72,6 @@ docker:
         - zanata_group
       image: idealista/java-debian-ansible
       image_version: latest
-      environment:
-        TMPDIR: /opt
       privileged: True
       cap_add:
         - SYS_ADMIN
