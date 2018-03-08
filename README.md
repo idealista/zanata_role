@@ -1,8 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/idealista/zanata-role/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/zanata-role.png)](https://travis-ci.org/idealista/zanata-role)
-
-# Zanata Ansible Role
+# Zanata Ansible Role [![Build Status](https://travis-ci.org/idealista/zanata-role.png)](https://travis-ci.org/idealista/zanata-role)
 
 This Ansible role installs a Zanata server in a Debian environment. Based on the instructions present in [Zanata Platform Documentation](http://docs.zanata.org/en/latest/user-guide/system-admin/configuration/installation/).
 
