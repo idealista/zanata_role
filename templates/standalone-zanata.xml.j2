@@ -89,7 +89,10 @@
             </logger>
         </audit-log>
         <management-interfaces>
-            <http-interface security-realm="ManagementRealm"
+            <http-interface
+                {% if zanata_management_security_enabled %}
+                security-realm="ManagementRealm"
+                {% endif %}
               http-upgrade-enabled="true">
                 <socket-binding http="management-http" />
             </http-interface>
@@ -626,7 +629,11 @@
 
     <interfaces>
         <interface name="management">
+            {% if zanata_management_security_enabled %}
             <inet-address value="${jboss.bind.address.management:127.0.0.1}" />
+            {% else %}
+            <inet-address value="127.0.0.1" />
+            {% endif %}
         </interface>
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}" />

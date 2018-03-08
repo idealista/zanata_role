@@ -1,0 +1,35 @@
+group:
+  {{ zanata_group }}:
+    exists: true
+
+user:
+  {{ zanata_user }}:
+    exists: true
+    groups:
+      - {{ zanata_group }}
+
+file:
+  {{ zanata_conf_path }}:
+    owner: {{ zanata_user }}
+    group: {{ zanata_group }}
+    exists: true
+    filetype: directory
+
+service:
+  zanata:
+    enabled: true
+    running: true
+
+port:
+  tcp:{{ zanata_port }}:
+    listening: true
+    ip:
+    - {{ zanata_bind }}
+  tcp:{{ zanata_management_port }}:
+    listening: true
+    ip:
+    {% if zanata_management_security_enabled %}
+    - {{ zanata_management_bind }}
+    {% else %}
+    - 127.0.0.1
+    {% endif %}

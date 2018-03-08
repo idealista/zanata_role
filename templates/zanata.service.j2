@@ -8,7 +8,7 @@ Environment=LAUNCH_JBOSS_IN_BACKGROUND=1
 EnvironmentFile={{ zanata_conf_path }}/zanata.conf
 User={{ zanata_user }}
 LimitNOFILE=102642
-ExecStart={{ zanata_container_install_path }}/bin/standalone.sh -c standalone-zanata.xml -P={{ zanata_conf_path }}/zanata.properties -b $ZANATA_BIND
+ExecStart={{ zanata_container_install_path }}/bin/standalone.sh -c standalone-zanata.xml -P={{ zanata_conf_path }}/zanata.properties
 {% if not zanata_system_log %}
 StandardOutput=null
 {% endif %}

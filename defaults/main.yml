@@ -37,6 +37,11 @@ zanata_log_file_maxBackupIndex: 7
 # Network
 zanata_bind: 0.0.0.0
 zanata_port: 8080 # Not 80
+zanata_management_bind: 0.0.0.0
+zanata_management_port: 9990
+
+# Management
+zanata_management_security_enabled: true
 
 ## DB Connection
 zanata_db_host: localhost

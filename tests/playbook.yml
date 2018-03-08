@@ -1,6 +1,13 @@
 ---
 
 - hosts: all
+  pre_tasks:
+    - name: Zanata | Installing test dependencies
+      apt:
+        pkg: "{{ item }}"
+        state: present
+      with_items:
+        - net-tools
   roles:
     - role: mysql
     - role: java

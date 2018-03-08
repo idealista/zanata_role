@@ -1,6 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/idealista/zanata-role/master/logo.gif)
 
-# Zanata Ansible Role
+# Zanata Ansible Role [![Build Status](https://travis-ci.org/idealista/zanata-role.png)](https://travis-ci.org/idealista/zanata-role)
 
 This Ansible role installs a Zanata server in a Debian environment. Based on the instructions present in [Zanata Platform Documentation](http://docs.zanata.org/en/latest/user-guide/system-admin/configuration/installation/).
 
@@ -20,10 +20,10 @@ These instructions will get you a copy of the role for your Ansible Playbook. On
 
 ### Prerequisities
 
-Ansible 2.2.1.0 version installed.
+Ansible 2.4.1.0 version installed.
 Inventory destination should be a Debian environment.
 
-For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [landrush](https://github.com/vagrant-landrush/landrush) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
+For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [vagrant-hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
 
 ### Installing
 
@@ -60,7 +60,7 @@ Execute ``` molecule test ``` under zanata-role folder to run the automated test
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.2.1.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.4.1.0-green.svg)
 
 ## Versioning
 
