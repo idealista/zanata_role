@@ -1,6 +1,6 @@
-![Logo](https://raw.githubusercontent.com/idealista/zanata-role/master/logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/zanata_role/master/logo.gif)
 
-# Zanata Ansible Role [![Build Status](https://travis-ci.org/idealista/zanata-role.png)](https://travis-ci.org/idealista/zanata-role)
+# Zanata Ansible Role [![Build Status](https://travis-ci.org/idealista/zanata_role.png)](https://travis-ci.org/idealista/zanata_role)
 
 This Ansible role installs a Zanata server in a Debian environment. Based on the instructions present in [Zanata Platform Documentation](http://docs.zanata.org/en/latest/user-guide/system-admin/configuration/installation/).
 
@@ -30,7 +30,7 @@ For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant
 Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
-- src: idealista/zanata-role
+- src: idealista/zanata_role
   version: 1.1.0
   name: zanata
 ```
@@ -56,7 +56,7 @@ Look to the [defaults](defaults/main.yml) properties file to see the possible co
 
 ## Testing
 
-Execute ``` molecule test ``` under zanata-role folder to run the automated tests suite.
+Execute ``` molecule test ``` under zanata_role folder to run the automated tests suite.
 
 ## Built With
 
@@ -64,7 +64,7 @@ Execute ``` molecule test ``` under zanata-role folder to run the automated test
 
 ## Versioning
 
-For the versions available, see the [tags on this repository](https://github.com/idealista/zanata-role/tags).
+For the versions available, see the [tags on this repository](https://github.com/idealista/zanata_role/tags).
 
 Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGELOG.md) file.
 
@@ -72,7 +72,7 @@ Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGE
 
 * **Idealista** - *Work with* - [idealista](https://github.com/idealista)
 
-See also the list of [contributors](https://github.com/idealista/zanata-role/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/idealista/zanata_role/contributors) who participated in this project.
 
 ## License
 

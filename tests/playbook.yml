@@ -12,4 +12,4 @@
     - role: mysql
     - role: java
     - role: wildfly
-    - role: zanata-role
+    - role: zanata_role
