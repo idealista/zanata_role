@@ -5,7 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/zanata_role/tree/develop)
 ### Changed
-- *[#23](https://github.com/idealista/zanata_role/issues/23) Using "_" instead of "-" in role name* @dortegau
+- *[#23](https://github.com/idealista/zanata_role/issues/23) * @dortegau
 
 ## [1.3.0](https://github.com/idealista/zanata_role/tree/1.3.0)
 ### Added

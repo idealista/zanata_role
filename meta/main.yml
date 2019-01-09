@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: zanata_role
   company: Idealista S.A.U.
   description: Zanata role to install and configure this server
   min_ansible_version: 2.4.1.0
