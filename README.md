@@ -25,7 +25,9 @@ These instructions will get you a copy of the role for your Ansible Playbook. On
 Ansible 2.4.1.0 version installed.
 Inventory destination should be a Debian environment.
 
-For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [vagrant-hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
+> :warning: This role asumes that [Java](https://github.com/idealista/java_role), [WildFly](https://github.com/idealista/wildfly-role) and [MySQL](https://github.com/idealista/mysql_role) are previously installed. 
+
+For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [vagrant-hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider. Docker could be used as driver too.
 
 ### Installing
 
@@ -58,7 +60,7 @@ Look to the [defaults](defaults/main.yml) properties file to see the possible co
 
 ## Testing
 
-Execute ``` molecule test ``` under zanata_role folder to run the automated tests suite.
+Execute `$ molecule test` under zanata_role folder to run the automated tests suite.
 
 ## Built With
 
@@ -78,6 +80,6 @@ See also the list of [contributors](https://github.com/idealista/zanata_role/con
 
 ## License
 
-![Apache 2.0 Licence](https://img.shields.io/hexpm/l/plug.svg)
+![Apache 2.0 License](https://img.shields.io/hexpm/l/plug.svg)
 
-This project is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license - see the [LICENSE.txt](LICENSE.txt) file for details.
+This project is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license - see the [LICENSE](LICENSE.txt) file for details.
