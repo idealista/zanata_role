@@ -1,17 +1,19 @@
+---
+
 group:
-  {{ zanata_group }}:
+  wildfly:
     exists: true
 
 user:
-  {{ zanata_user }}:
+  wildfly:
     exists: true
     groups:
-      - {{ zanata_group }}
+      - wildfly
 
 file:
-  {{ zanata_conf_path }}:
-    owner: {{ zanata_user }}
-    group: {{ zanata_group }}
+  /etc/zanata:
+    owner: wildfly
+    group: wildfly
     exists: true
     filetype: directory
 
@@ -24,12 +26,12 @@ port:
   tcp:{{ zanata_port }}:
     listening: true
     ip:
-    - {{ zanata_bind }}
+    - 0.0.0.0
   tcp:{{ zanata_management_port }}:
     listening: true
     ip:
     {% if zanata_management_security_enabled %}
-    - {{ zanata_management_bind }}
+    - 0.0.0.0
     {% else %}
     - 127.0.0.1
     {% endif %}

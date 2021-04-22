@@ -13,6 +13,9 @@ zanata_admin_users: []
 # Owner (setted same as container)
 zanata_user: wildfly
 zanata_group: wildfly
+zanata_user_home: "/home/{{ zanata_user }}"
+zanata_user_shell: "/bin/sh"
+zanata_user_uid: 1005
 
 # start on boot
 zanata_service_enabled: True
@@ -20,10 +23,14 @@ zanata_service_enabled: True
 zanata_service_state: started
 
 # Files & Paths
+zanata_skeleton_paths: /opt/zanata
 zanata_container_install_path: "/opt/wildfly"
 zanata_container_configuration_path: "{{ zanata_container_install_path }}/standalone/configuration"
 zanata_conf_path: "/etc/zanata"
 zanata_log_file_path: "{{ zanata_container_install_path }}/standalone/log"
+zanata_wildfly_conf_path: "/etc/wildfly"
+zanata_wildfly_running_configuration_file: "{{ zanata_wildfly_conf_path }}/standalone.conf"
+zanata_conf_template_path: templates
 
 # Log
 zanata_log_file_name: server.log
@@ -36,7 +43,7 @@ zanata_log_file_maxBackupIndex: 7
 
 # Network
 zanata_bind: 0.0.0.0
-zanata_port: 8080 # Not 80
+zanata_port: 8080  # Not 80
 zanata_management_bind: 0.0.0.0
 zanata_management_port: 9990
 
@@ -71,3 +78,10 @@ zanata_ldap_allow_empty_passwords: true
 
 # DEBUG
 zanata_system_log: false
+
+# DEPENDENCIES
+zanata_required_libs:
+  - unzip
+
+# MISC
+zanata_force_reinstall: false
