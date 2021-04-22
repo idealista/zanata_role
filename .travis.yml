@@ -1,18 +1,17 @@
 ---
 language: python
-python: "2.7.12"
-sudo: required
-group: deprecated-2017Q4
-
+python: "3.7"
+os: linux
 services:
   - docker
 install:
-  - pip install ansible==2.4.1.0
-  - pip install molecule==1.25.0
-  - pip install ansible-lint==3.4.20
-  - pip install docker
+  - pip install pipenv
+  - pipenv sync
+env:
+  jobs:
+    - MOLECULE_DISTRO=idealista/jdk:8u265-stretch-openjdk-headless
 script:
-  - molecule test --driver docker
+  - pipenv run molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

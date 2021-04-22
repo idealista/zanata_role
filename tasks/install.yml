@@ -1,40 +1,68 @@
 ---
 
+- name: Zanata | Ensure zanata group
+  group:
+    name: "{{ zanata_group }}"
+    system: yes
+    state: present
+
+- name: Zanata | Ensure Zanata user exists
+  user:
+    name: "{{ zanata_user }}"
+    group: "{{ zanata_group }}"
+    shell: "{{ zanata_user_shell }}"
+    createhome: yes
+    home: "{{ zanata_user_home }}"
+    uid: "{{ zanata_user_uid }}"
+    state: present
+
+- name: Zanata | Ensure skeleton paths
+  file:
+    dest: "{{ item }}"
+    owner: "{{ zanata_user }}"
+    group: "{{ zanata_group }}"
+    state: directory
+  with_items:
+    - "{{ zanata_skeleton_paths }}"
+
 - name: Zanata | Installing dependencies
   apt:
-    pkg: "{{ item }}"
+    pkg: "{{ zanata_required_libs }}"
     state: present
-  with_items: "{{ required_libs }}"
-  tags:
-    skip_ansible_lint
 
-- name: Zanata | Download Zanata binaries
-  get_url:
-    url: "{{ zanata_url }}"
-    dest: "/tmp/{{ zanata_package }}"
-  register: download_zanata
+- name: Zanata | Check zanata version
+  command: "ls {{ zanata_skeleton_paths }}/{{ zanata_package }}"
+  register: zanata_check
+  changed_when: false
+  ignore_errors: true
 
-- name: Zanata | Extract Zanata in the container directory
-  unarchive:
-    copy: no
-    src: "/tmp/{{ zanata_package }}"
-    dest: "{{ zanata_container_install_path }}"
-    owner: "{{ zanata_user }}"
-    group: "{{ zanata_group }}"
-  when: download_zanata|changed
-  tags:
-    skip_ansible_lint
+- block:
+    - name: Zanata | Download Zanata binaries
+      get_url:
+        url: "{{ zanata_url }}"
+        dest: "/{{ zanata_skeleton_paths }}/{{ zanata_package }}"
+        owner: "{{ zanata_user }}"
+        group: "{{ zanata_group }}"
 
-- name: Zanata | Create log path
-  file:
-    path: "{{ zanata_log_file_path }}"
-    state: directory
-    owner: "{{ zanata_user }}"
-    group: "{{ zanata_group }}"
+    - name: Zanata | Extract Zanata in the container directory
+      unarchive:
+        src: "/{{ zanata_skeleton_paths }}/{{ zanata_package }}"
+        dest: "{{ zanata_container_install_path }}"
+        owner: "{{ zanata_user }}"
+        group: "{{ zanata_group }}"
+        remote_src: True
 
-- name: Zanata | Copy Daemon script
-  template:
-    src: zanata.service.j2
-    dest: /lib/systemd/system/zanata.service
-    mode: 0644
-  notify: restart zanata
+    - name: Zanata | Create log path
+      file:
+        path: "{{ zanata_log_file_path }}"
+        state: directory
+        owner: "{{ zanata_user }}"
+        group: "{{ zanata_group }}"
+
+    - name: Zanata | Copy Daemon script
+      template:
+        src: zanata.service.j2
+        dest: /lib/systemd/system/zanata.service
+        mode: 0644
+      notify: restart zanata
+  when: zanata_force_reinstall or zanata_check is failed or zanata_version not in zanata_check.stdout

@@ -1,5 +1,5 @@
 ---
-# handlers file for zanata-role
+# handlers file for zanata_role
 
 - name: restart zanata
   systemd:

@@ -1,16 +1,18 @@
 ---
 
 ## MYSQL
+mysql_version: 0.8.6-1
+mysql_flavour: mysql
 mysql_databases:
-   - name: zanata
-     encoding: utf8
+  - name: zanata
+    encoding: utf8
 
 mysql_users:
-   - name: zanata
-     host: localhost
-     password: zanatapw
-     priv:
-        - zanata.*:ALL
+  - name: zanata
+    host: localhost
+    password: zanatapw
+    priv:
+      - 'zanata.*:ALL'
 
 ## ZANATA
 zanata_admin_users:
@@ -21,6 +23,8 @@ zanata_log_file_path: /var/log/zanata
 zanata_log_file_name: zanata.log
 zanata_system_log: true
 zanata_log_console_enabled: true
+zanata_user: wildfly
+zanata_group: wildfly
 
 # Network
 zanata_port: 8888
@@ -30,6 +34,11 @@ zanata_management_security_enabled: false
 # JVM
 zanata_xmx: 1g
 zanata_xms: 1g
+zanata_conf_template_path: "{{ playbook_dir }}/templates/zanata"
+
+## JAVA
+java_jdk_vendor: openjdk
+java_open_jdk_version: 8u275-b01-1~deb9u1
 
 ## WILDFLY
 wildfly_service_enabled: false
@@ -41,7 +50,6 @@ wildfly_log_file_name: wildfly.log
 wildfly_running_configuration_file: "{{ wildfly_conf_path }}/standalone.conf"
 
 wildfly_management_users:
-  - {
-      name: admin,
+  - { name: admin,
       password: admin
-    }
+  }

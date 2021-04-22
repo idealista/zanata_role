@@ -1,0 +1,13 @@
+---
+
+- src: idealista.mysql_role
+  version: 4.1.0
+  name: mysql
+
+- src: idealista.wildfly-role
+  version: 1.4.0
+  name: wildfly
+
+- src: idealista.java_role
+  version: 5.1.0
+  name: java
