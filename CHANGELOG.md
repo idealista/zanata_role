@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/zanata_role/tree/develop)
+## [1.4.0](https://github.com/idealista/zanata_role/tree/1.4.0)
 ### Added
 - *[#25](https://github.com/idealista/zanata_role/issues/25) Let provide custom zanata config template* @jmonterrubio
 
