@@ -1,6 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/idealista/zanata_role/master/logo.gif)
 
 # Zanata Ansible Role [![Build Status](https://travis-ci.com/idealista/zanata_role.png)](https://travis-ci.com/idealista/zanata_role)
+:warning: This repository is **archived**, please use [WildFly role](https://github.com/idealista/wildfly_role) to configure zanata as service.
 
 This Ansible role installs a Zanata server in a Debian environment. Based on the instructions present in [Zanata Platform Documentation](http://docs.zanata.org/en/latest/user-guide/system-admin/configuration/installation/).
 
